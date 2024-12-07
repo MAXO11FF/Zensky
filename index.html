@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenSky Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            overflow: hidden;
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .profile-container {
+            width: 80%;
+            max-width: 700px;
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.9), rgba(10, 10, 10, 0.8));
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+            animation: fadeIn 1.5s ease;
+        }
+
+        .profile-pic img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+        }
+
+        .multicolor-text {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin: 20px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            background: linear-gradient(90deg, #ff4d4d, #ffcc00, #4dff4d, #4d4dff, #cc00ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 6s ease infinite;
+        }
+
+        .about-me {
+            font-size: 1.2em;
+            font-weight: 300;
+            margin-top: 15px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .stats-container {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 15px;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 15px 10px;
+            text-align: center;
+            width: 30%;
+            min-width: 90px;
+            font-size: 0.9em;
+        }
+
+        .stat-title {
+            font-size: 0.8em;
+            opacity: 0.8;
+        }
+
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+
+        .skills {
+            margin-top: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .skill-badge {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 0.9em;
+            font-weight: 500;
+            color: white;
+            transition: background 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-badge:hover {
+            background: white;
+            color: black;
+            transform: translateY(-3px);
+        }
+
+        .cta-buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .cta-buttons a {
+            text-decoration: none;
+            color: white;
+            font-size: 1em;
+            font-weight: 500;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 30px;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-buttons a:hover {
+            background: white;
+            color: black;
+            transform: translateY(-3px);
+        }
+
+        .wallpaper-selection {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .wallpaper-option {
+            width: 120px;
+            height: 70px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .wallpaper-option video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .profile-pic img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .multicolor-text {
+                font-size: 2em;
+            }
+
+            .about-me {
+                font-size: 1em;
+            }
+
+            .cta-buttons a {
+                font-size: 0.9em;
+                padding: 8px 15px;
+            }
+
+            .stat-box {
+                width: 45%;
+            }
+
+            .wallpaper-option {
+                width: 90px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted playsinline id="background-video">
+        <source src="background1.mp4" type="video/mp4">
+    </video>
+
+    <audio id="background-music" autoplay loop muted>
+        <source id="music-source" src="" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="profile-container">
+        <div class="profile-pic">
+            <img src="profile.png" alt="Profile Picture">
+        </div>
+        <h1 class="multicolor-text">ZenSky</h1>
+        <p class="about-me">
+          >3
+        </p>
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-title">YouTube Subs</div>
+                <div id="youtube-subs" class="stat-value">-</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-title">Gameram Followers</div>
+                <div id="gameram-followers" class="stat-value">-</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-title">Discord Members</div>
+                <div id="discord-members" class="stat-value">-</div>
+            </div>
+        </div>
+        <div class="skills">
+            <span class="skill-badge">HTML</span>
+            <span class="skill-badge">CSS</span>
+            <span class="skill-badge">JavaScript</span>
+            <span class="skill-badge">React</span>
+            <span class="skill-badge">Python</span>
+            <span class="skill-badge">Node.js</span>
+        </div>
+        <div class="cta-buttons">
+            <a href="mailto:fa4han01@gmail.com">Contact Me</a>
+        </div>
+
+        <!-- Wallpaper selection section -->
+        <div class="wallpaper-selection">
+            <div class="wallpaper-option" onclick="changeWallpaper('background1.mp4')">
+                <video muted loop autoplay>
+                    <source src="background1.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="wallpaper-option" onclick="changeWallpaper('background2.mp4')">
+                <video muted loop autoplay>
+                    <source src="background2.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="wallpaper-option" onclick="changeWallpaper('background3.mp4')">
+                <video muted loop autoplay>
+                    <source src="background3.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="wallpaper-option" onclick="changeWallpaper('background4.mp4')">
+                <video muted loop autoplay>
+                    <source src="background4.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchYouTubeSubscribers() {
+            const apiKey = 'AIzaSyBYYmLhQtECYq2qoo8aASXBC8w2sfYOGCQ';  
+            const channelId = 'UCweNyFb3AnfRMNNCWgTiXDw';  
+            const url = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`;
+            
+            const response = await fetch(url);
+            const data = await response.json();
+            const subscriberCount = data.items[0].statistics.subscriberCount;
+            document.getElementById('youtube-subs').textContent = subscriberCount;
+        }
+
+        async function fetchDiscordMembers() {
+            const serverId = '1221849027100807168';  
+            const botToken = 'YOUR_BOT_TOKEN';  
+            const url = `https://discord.com/api/v10/guilds/${serverId}`;
+            
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bot ${botToken}`
+                }
+            });
+            const data = await response.json();
+            const memberCount = data.approximate_member_count;
+            document.getElementById('discord-members').textContent = memberCount;
+        }
+
+        fetchYouTubeSubscribers();
+        fetchDiscordMembers();
+
+        function changeWallpaper(videoFile) {
+            const videoElement = document.getElementById('background-video');
+            videoElement.src = videoFile;
+        }
+
+   
+        function randomMusicPlay() {
+            const musicFiles = ['music1.mp3', 'music2.mp3'];
+            const randomMusic = musicFiles[Math.floor(Math.random() * musicFiles.length)];
+            document.getElementById('music-source').src = randomMusic;
+            document.getElementById('background-music').load();
+            document.getElementById('background-music').play();
+        }
+
+
+        window.onload = function() {
+ 
+            randomMusicPlay();
+
+ 
+            document.body.addEventListener('click', function() {
+                const audioElement = document.getElementById('background-music');
+                audioElement.muted = false;
+                audioElement.play();
+            });
+        };
+    </script>
+</body>
+</html>
